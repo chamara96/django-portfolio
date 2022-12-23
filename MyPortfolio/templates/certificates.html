@@ -1,0 +1,43 @@
+{% load static %}
+
+<!-- section services -->
+<section id="certificates">
+
+    <div class="container">
+        
+        <!-- section title -->
+        <h2 class="section-title wow fadeInUp">Certificates</h2>
+
+        <div class="spacer" data-height="60"></div>
+        
+        <div class="row testimonials-wrapper-certificates">
+
+            {% for c in certificates %}
+            <div class="col-md-3">
+                <!-- blog item -->
+                <div class="blog-item rounded bg-dark shadow-light wow fadeIn">
+                    <div class="thumb">
+                        <a href="#">
+                            <span class="category">{{c.institute}} - {{c.year}}</span>
+                        </a>
+                        <a href="#">
+                            <img src="{% get_media_prefix %}{{ c.logo.image }}" alt="blog-title" />
+                        </a>
+                    </div>
+                    <div class="details">
+                        <p class="my-0"><a style="color: gray;" href="{{ c.url }}"><strong>{{ c.title}}</strong></a></p>
+                        <ul class="list-inline meta mb-0 mt-2">
+                            <li class="list-inline-item">{{c.year}}</li>
+                            <li class="list-inline-item">{{c.institute}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+
+        </div>
+
+    </div>
+    
+</section>
