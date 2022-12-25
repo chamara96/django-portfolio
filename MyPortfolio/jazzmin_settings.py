@@ -69,6 +69,7 @@ JAZZMIN_SETTINGS = {
         "auth",
         "resume.basicinfo",
         "resume.stack",
+        "resume.techskill",
         "resume.socialmedia",
         "resume.experience",
         "resume.review",

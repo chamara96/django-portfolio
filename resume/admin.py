@@ -7,8 +7,6 @@ class ConfigAdmin(ConstanceAdmin):
     change_list_template = 'admin/config/settings.html'
 
 
-
-
 class BasicInfoAdmin(admin.ModelAdmin):
 
     list_display = [
@@ -140,11 +138,30 @@ class ContactAdmin(admin.ModelAdmin):
         "email",
         "subject",
         "message",
+        "created_at",
     ]
 
     exclude = [
         "is_active",
         "order",
+    ]
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=None) -> bool:
+        return False
+
+
+class LogAdmin(admin.ModelAdmin):
+
+    list_display = [
+        "ip_address",
+        "device_type",
+        "device_name",
+        "os",
+        "browser",
+        "login_at",
     ]
 
     def has_add_permission(self, request):
@@ -170,3 +187,4 @@ admin.site.register(Certificate, CertificateAdmin)
 admin.site.register(Publication, PublicationAdmin)
 admin.site.register(Blog, BlogAdmin)
 admin.site.register(Contact, ContactAdmin)
+admin.site.register(Log, LogAdmin)

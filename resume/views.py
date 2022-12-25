@@ -1,12 +1,9 @@
-from django.shortcuts import render
-from django.http import HttpResponseRedirect
 from django.http import JsonResponse
-from .models import *
-from .forms import ContactForm
-import requests
+from django.shortcuts import render
 from constance import config
 
-# Create your views here.
+from .forms import ContactForm
+from . import utils as db_utils
 
 
 def home(request):
@@ -16,32 +13,28 @@ def home(request):
             form.save()
             return JsonResponse({
                 "type": "success",
-                "message": "Sample Response",
+                "message": "Thanks for your response...",
             })
+        return JsonResponse({
+            "type": "danger",
+            "message": " ".join(str(err[0]) for err in form.errors.values()),
+        })
 
     else:
         form = ContactForm()
 
-        basic_info = BasicInfo.objects.latest()
+        basic_info = db_utils.get_basic_info()
+        stacks = db_utils.get_stacks()
+        tech_skills = db_utils.get_techskills()
+        social_media = db_utils.get_socialmedia()
+        reviews = db_utils.get_reviews()
+        certificates = db_utils.get_certificates()
+        publications = db_utils.get_publications()
+        experiences = db_utils.get_experiences()
+        projects = db_utils.get_projects()
+        blogs = db_utils.get_blogs()
 
-        stacks = Stack.objects.values_list('title', flat=True)
-        stacks = ", ".join(stacks)
-
-        tech_skills = TechSkill.objects.all()
-
-        social_media = SocialMedia.objects.all()
-
-        reviews = Review.objects.all()
-
-        certificates = Certificate.objects.all()
-
-        publications = Publication.objects.all()
-
-        experiences = Experience.objects.all()
-
-        projects = Project.objects.all()
-
-        blogs = Blog.objects.all()
+        db_utils.create_user_logs(request)
 
         context = {
             "basic": basic_info,
@@ -58,9 +51,3 @@ def home(request):
             "config": config,
         }
         return render(request, 'index.html', context)
-
-
-def fiverr_reviews():
-    url = "https://www.fiverr.com/reviews/user_page/fetch_user_reviews/79556254?user_id=79556254&as_seller=true"
-    x = requests.get(url)
-    print(x.status_code)

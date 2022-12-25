@@ -16,14 +16,7 @@ class BaseModel(models.Model):
 
     class Meta:
         abstract = True
-
-
-class SiteSetting(models.Model):
-    site_title = models.CharField(max_length=255)
-    meta_description = models.CharField(max_length=255)
-    meta_keywords = models.CharField(max_length=255)
-    meta_author = models.CharField(max_length=255)
-    footer_text = models.CharField(max_length=255)
+        ordering = ("order",)
 
 
 class BasicInfo(BaseModel):
@@ -239,3 +232,15 @@ class Contact(BaseModel):
 
     def __str__(self) -> str:
         return self.name
+
+
+class Log(models.Model):
+    ip_address = models.CharField(max_length=20, null=True)
+    device_type = models.CharField(max_length=255, null=True)
+    device_name = models.CharField(max_length=255, null=True)
+    os = models.CharField(max_length=255, null=True)
+    browser = models.CharField(max_length=255, null=True)
+    login_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self) -> str:
+        return self.ip_address
