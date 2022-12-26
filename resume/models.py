@@ -87,6 +87,9 @@ class Experience(BaseModel):
     technologies = models.CharField(max_length=255)
     description = models.TextField()
 
+    def tech_list(self):
+        return self.technologies.split(",")
+
     def __str__(self) -> str:
         return f"{self.title} - {self.company}"
 
@@ -219,6 +222,7 @@ class Blog(BaseModel):
         default="default_blog.jpg",
         upload_to=get_upload_path,
     )
+    published_date = models.DateField(null=True, blank=True)
 
     def __str__(self) -> str:
         return self.title

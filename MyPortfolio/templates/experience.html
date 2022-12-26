@@ -21,13 +21,16 @@
                         <div class="content">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <span class="time">{{ e.from_date }} - {{ e.to_date }}</span>
+                                    <span class="time">{{ e.from_date }} - {{ e.to_date|default_if_none:"Present" }}</span>
                                     <h3 class="title">{{ e.company }}</h3>
                                     <p>{{ e.description }}</p>
+                                    {% for ts in e.tech_list %}
+                                    <span class="badge badge-pill badge-secondary">{{ts}}</span>
+                                    {% endfor %}
                                 </div>
-                                <div class="col-md-6 m-auto">
+                                <!-- <div class="col-md-6 m-auto">
                                     <img src="{{ e.logo }}" alt="">
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

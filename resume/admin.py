@@ -126,6 +126,7 @@ class BlogAdmin(admin.ModelAdmin):
     list_display = [
         "title",
         "url",
+        "published_date",
         "order",
         "is_active",
     ]
