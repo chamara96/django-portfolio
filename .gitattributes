@@ -1,1 +1,4 @@
  MyPortfolio/static/* linguist-vendored
+*.js linguist-vendored
+*.css linguist-vendored
+* text=auto
