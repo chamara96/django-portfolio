@@ -50,4 +50,4 @@ def home(request):
             "form": form,
             "config": config,
         }
-        return render(request, 'index.html', context)
+        return render(request, 'resume/index.html', context)
