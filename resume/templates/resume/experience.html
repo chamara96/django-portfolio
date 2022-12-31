@@ -22,7 +22,9 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <span class="time">{{ e.from_date }} - {{ e.to_date|default_if_none:"Present" }}</span>
-                                    <h3 class="title">{{ e.company }}</h3>
+                                    <h3 class="title">{{ e.title }}</h3>
+                                    <h4 style="margin: 5px 0; color: #adb5bd9c;" class="title">{{ e.company }}</h4>
+                                    <a target="_blank" href="{{e.url}}">{{e.url}}</a>
                                     <p>{{ e.description }}</p>
                                     {% for ts in e.tech_list %}
                                     <span class="badge badge-pill badge-secondary">{{ts}}</span>
