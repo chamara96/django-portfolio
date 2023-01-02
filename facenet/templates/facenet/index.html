@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block navbar %}
+{% include 'facenet/navbar.html' %}
+{% endblock %}
+
+{% block content %}
+{% if view == 'train_face' %}
+{% include 'facenet/train_face.html' %}
+{% else %}
+{% include 'facenet/home.html' %}
+{% endif %}
+
+
+
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+    var process_image_url = "{{process_image_url}}";
+    var train_face_url = "{{train_face_url}}";
+</script>
+<script src="{% static 'js/facenet-utils.js' %}"></script>
+{% endblock %}

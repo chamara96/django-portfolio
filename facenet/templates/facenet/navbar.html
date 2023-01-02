@@ -1,0 +1,34 @@
+<!-- <nav>
+    <ul class="vertical-menu scrollspy">
+        <li class="active">
+            <a href="#home"><i class="icon-home"></i>Run Model</a>
+        </li>
+        <li class="">
+            <a href="#"><i class="icon-user-following"></i>Train a Face</a>
+        </li>
+        <li><a href="#"><i class="icon-graduation"></i>About</a></li>
+    </ul>
+</nav> -->
+
+{% with request.resolver_match.url_name as url_name %}
+<nav>
+    <ul class="vertical-menu">
+        <li>
+            <a class="{% if url_name == 'index' %}active{% endif %}" href="{% url 'index' %}"><i
+                    class="icon-home"></i>Run Model</a>
+        </li>
+        <li>
+            <a class="{% if url_name == 'train_face' %}active{% endif %}" href="{% url 'train_face' %}"><i
+                    class="icon-user-following"></i>Train a Face</a>
+        </li>
+        <li>
+            <a href="#about-dialog" class="custom-about-modal"><i class="icon-graduation"></i>About</a>
+        </li>
+    </ul>
+</nav>
+
+<div id="about-dialog" class="white-popup zoom-anim-dialog mfp-hide">
+    <h2>Facenet</h2>
+    <p>My v2 implementation</p>
+</div>
+{% endwith %}

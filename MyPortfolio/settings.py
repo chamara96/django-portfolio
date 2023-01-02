@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'resume',
+    'facenet',
     'constance',
     'constance.backends.database',
 ]
@@ -150,3 +151,6 @@ from .constance_config import CONSTANCE_CONFIG, CONSTANCE_CONFIG_FIELDSETS
 
 # ======================================================================
 
+FACENET_BACKEND = os.getenv("FACENET_BACKEND")
+FACENET_PROCESS_IMAGE_PATH = os.getenv("FACENET_PROCESS_IMAGE_PATH")
+FACENET_TRAIN_FACE_PATH = os.getenv("FACENET_TRAIN_FACE_PATH")
