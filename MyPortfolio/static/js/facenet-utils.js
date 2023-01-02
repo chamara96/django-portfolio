@@ -20,6 +20,7 @@ $(document).ready(function (e) {
 
     $("#image-process-form").on('submit', function (e) {
         e.preventDefault();
+        $("#image-process-form .messages").html("")
 
         if (request) {
             request.abort();
@@ -59,6 +60,7 @@ $(document).ready(function (e) {
 
     $("#face-train-form").on('submit', function (e) {
         e.preventDefault();
+        $("#face-train-form .messages").html("")
 
         if (request) {
             request.abort();
@@ -79,7 +81,7 @@ $(document).ready(function (e) {
             },
             success: function (response) {
                 var name = response["trained_face"]["name"];
-                $("#face-train-form .messages").text(name + ", Your face vector has added to the system.");
+                $("#face-train-form .messages").text("Done, " + name + ", Your face vector has added to the system.");
                 drawBoundryBoxWithName(response["trained_face"]["box"], response["trained_face"]["name"]);
             },
             error: function (jqXHR, textStatus, errorThrown) {
