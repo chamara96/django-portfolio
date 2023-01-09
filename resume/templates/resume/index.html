@@ -16,3 +16,20 @@
 	{% include 'resume/blog.html' %}
 	{% include 'resume/contact.html' %}
 {% endblock %}
+
+{% block styles %}
+<style>
+	.pub-viewcount .number .count {
+		font-style: inherit;
+	}
+
+	.pub-viewcount .number span {
+		font-weight: 400;
+		font-size: 16px;
+	}
+
+	.pub-viewcount h3 {
+		color: #adb5bd !important;
+	}
+</style>
+{% endblock %}

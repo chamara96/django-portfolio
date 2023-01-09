@@ -221,6 +221,7 @@ class Publication(BaseModel):
     date = models.DateField(null=True)
     url = models.CharField(max_length=255, null=True)
     logo = models.ForeignKey(CommonImage, null=True, on_delete=models.SET_NULL)
+    views = models.PositiveIntegerField(null=True, blank=True)
 
     def logo_tag(self):
         if self.logo:

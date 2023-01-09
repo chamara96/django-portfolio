@@ -89,6 +89,7 @@ class PublicationAdmin(admin.ModelAdmin):
         "title",
         "institute",
         "date",
+        "views",
         "order",
         "is_active",
     ]
