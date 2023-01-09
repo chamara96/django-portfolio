@@ -31,6 +31,7 @@ def home(request):
         certificates = db_utils.get_certificates()
         publications = db_utils.get_publications()
         experiences = db_utils.get_experiences()
+        demos = db_utils.get_demos()
         projects = db_utils.get_projects()
         blogs = db_utils.get_blogs()
 
@@ -45,6 +46,7 @@ def home(request):
             "experiences": experiences,
             "certificates": certificates,
             "publications": publications,
+            "demos": demos,
             "projects": projects,
             "blogs": blogs,
             "form": form,

@@ -1,0 +1,33 @@
+{% load static %}
+
+<!-- section demo -->
+<section id="demo">
+
+    <div class="container">
+        
+        <!-- section title -->
+        <h2 class="section-title wow fadeIn">Recent Works</h2>
+
+        <div class="spacer" data-height="60"></div>
+        
+        <div class="row">
+            
+            {% for d in demos %}
+            <div class="col-md-4 pr-md-0 mt-md-4 mt-0">
+                <!-- price item -->
+                <div class="price-item bg-dark rounded shadow-light text-center">
+                    <i class="{{d.icon}}" style="font-size: xxx-large;"></i>
+                    <h2 class="plan">{{d.title}}</h2>
+                    <p>{{d.short_description}}</p>
+                    <span style="color: #8B88B1;">{{d.release_date}}</span>
+                    <br>
+                    <a href="{{d.url}}" target="_blank" class="btn btn-default">Open App</a>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>

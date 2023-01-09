@@ -38,8 +38,8 @@ class TechSkillAdmin(admin.ModelAdmin):
 class SocialMediaAdmin(admin.ModelAdmin):
 
     list_display = [
-        "icon_tag",
         "name",
+        "icon_tag",
         "link",
         "order",
         "is_active",
@@ -98,6 +98,18 @@ class ProjectAdmin(admin.ModelAdmin):
 
     list_display = [
         "title",
+        "order",
+        "is_active",
+    ]
+
+
+class DemoAdmin(admin.ModelAdmin):
+
+    list_display = [
+        "title",
+        "icon_tag",
+        "url",
+        "release_date",
         "order",
         "is_active",
     ]
@@ -181,6 +193,7 @@ admin.site.register(Stack, StackAdmin)
 admin.site.register(TechSkill, TechSkillAdmin)
 admin.site.register(SocialMedia, SocialMediaAdmin)
 admin.site.register(Experience, ExperienceAdmin)
+admin.site.register(Demo, DemoAdmin)
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(ProjectImage, ProjectImageAdmin)
 admin.site.register(CommonImage, CommonImageAdmin)

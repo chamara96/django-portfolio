@@ -41,6 +41,10 @@ def get_projects():
     return Project.objects.filter(is_active=True)
 
 
+def get_demos():
+    return Demo.objects.filter(is_active=True)
+
+
 def get_blogs():
     return Blog.objects.filter(is_active=True)
 

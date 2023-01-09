@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator
 from django.utils.html import format_html
+from django.utils.safestring import mark_safe
 from utils import (
     get_upload_path,
     current_year,
@@ -64,7 +65,10 @@ class Stack(BaseModel):
 
 class SocialMedia(BaseModel):
     name = models.CharField(max_length=50)
-    icon = models.CharField(max_length=50)
+    icon = models.CharField(
+        max_length=50,
+        help_text=mark_safe('<a target="_blank" href="https://fontawesome.com/v5/search?o=r&m=free">Fontawesome Icons 5.15.3</a>')
+    )
     link = models.CharField(max_length=255)
 
     def icon_tag(self):
@@ -107,6 +111,26 @@ class Review(BaseModel):
 
     def __str__(self) -> str:
         return f"{self.client_name} - {self.date}"
+
+
+class Demo(BaseModel):
+    title = models.CharField(max_length=255)
+    icon = models.CharField(
+        max_length=255,
+        help_text=mark_safe('<a target="_blank" href="https://fontawesome.com/v5/search?o=r&m=free">Fontawesome Icons 5.15.3</a>')
+    )
+    short_description = models.CharField(max_length=255)
+    url = models.CharField(max_length=255, blank=True, null=True)
+    release_date = models.DateField(blank=True, null=True)
+
+    def __str__(self) -> str:
+        return self.title
+
+    def icon_tag(self):
+        return format_html(f'<i class="{self.icon}"></i>')
+
+    icon_tag.short_description = "Icon"
+    icon_tag.allow_tags = True
 
 
 class Project(BaseModel):

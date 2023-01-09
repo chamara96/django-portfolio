@@ -84,6 +84,7 @@ JAZZMIN_SETTINGS = {
         "resume.review",
         "resume.certificate",
         "resume.publication",
+        "resume.demo",
         "resume.project",
         "resume.projectimage",
         "resume.blog",
