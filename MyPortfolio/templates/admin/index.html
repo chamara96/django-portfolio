@@ -36,6 +36,12 @@
     </div>
 
     <div class="card text-center">
+        <div>
+            <canvas id="siteVisitChart"></canvas>
+        </div>
+    </div>
+
+    <div class="card text-center">
         <div class="card-header bg-secondary"><strong>Working Apps</strong></div>
         <div class="card-body">
             <a target="_blank" href="/" class="btn btn-primary">Goto Portfolio</a>
@@ -108,4 +114,49 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block extrajs %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script type="text/javascript" src="{% static 'js/Chart.min.js' %}"></script>
+<script>
+    const ctx = document.getElementById('siteVisitChart');
+
+    log_data = {{ log_chart | safe }};
+
+    chart_lable = log_data.map(function (elem) { return elem.date; })
+    chart_value = log_data.map(function (elem) { return elem.count; })
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: chart_lable,
+            datasets: [{
+                label: 'Count',
+                data: chart_value,
+                borderWidth: 2,
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Site Visit Statics'
+            },
+            scales: {
+                xAxes: [{
+                    type: 'time',
+                    time: {
+                        unit: 'day',
+                        tooltipFormat: 'MMM DD'
+                    },
+                }],
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        },
+    });
+</script>
 {% endblock %}

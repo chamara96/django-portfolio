@@ -5,3 +5,4 @@ django-jazzmin>=2.6.0,<2.7
 django-picklefield==3.1
 django-constance>=2.9.1,<2.10
 user-agent-parser>=0.1.1,<0.2
+django-chartjs>=2.3.0,<2.4
