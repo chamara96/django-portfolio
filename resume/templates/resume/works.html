@@ -15,23 +15,29 @@
 
             {% for p in projects %}
             <div class="col-md-4 col-sm-6 grid-item creative design">
-                <a href="#small-dialog" class="work-content">
+                <a href="#modal-project-{{p.id}}" class="work-content">
                     <div class="portfolio-item rounded shadow-dark">
                         <div class="details">
                             <h4 class="title">{{ p.title }}</h4>
                             <span class="more-button"><i class="icon-options"></i></span>
                         </div>
                         <div class="thumb">
+                            {% if p.get_images.0 %}
                             <img src="{% get_media_prefix %}{{ p.get_images.0 }}" alt="Portfolio-title" />
+                            {% endif %}
                             <div class="mask"></div>
                         </div>
                     </div>
                 </a>
-                <div id="small-dialog" class="white-popup zoom-anim-dialog mfp-hide">
+                <div id="modal-project-{{p.id}}" class="white-popup zoom-anim-dialog mfp-hide">
+                    {% if p.get_images.0 %}
                     <img src="{% get_media_prefix %}{{ p.get_images.0 }}" alt="Title" />
+                    {% endif %}
                     <h2>{{ p.title }}</h2>
-                    <p>{{ p.description }}</p>
-                    <a href="{{ p.url }}" class="btn btn-default">View</a>
+                    <p>{{ p.description | safe }}</p>
+                    {% if p.url %}
+                    <a href="{{ p.url }}" target="_blank" class="btn btn-default">View</a>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}
