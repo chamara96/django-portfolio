@@ -20,20 +20,35 @@
 {% widthratio dashboard_list|length 2 1 as middle %}
 {% endif %}
 
-<div class="col-lg-6 col-12">
-    <div class="card text-center">
-        <div class="card-header bg-secondary"><strong>Statics</strong></div>
-        <div class="card-body">
-            <p class="card-text">Total Contacts: <span class="badge badge-warning">{{contacts_count}}</span></p>
-            <p class="card-text">Total Logs: <span class="badge badge-warning">{{total_log_count}}</span></p>
-            <p class="card-text">Today Logs: <span class="badge badge-warning">{{today_log_count}}</span></p>
+<div class="col-lg-8 col-12">
+    <div class="row">
+        <div class="col-lg-6 col-12">
+            <div class="card text-center">
+                <div class="card-header bg-secondary"><strong>Statics</strong></div>
+                <div class="card-body">
+                    <p class="card-text">Total Contacts: <span class="badge badge-warning">{{contacts_count}}</span></p>
+                    <p class="card-text">Total Logs: <span class="badge badge-warning">{{total_log_count}}</span></p>
+                    <p class="card-text">Today Logs: <span class="badge badge-warning">{{today_log_count}}</span></p>
+                </div>
+                <div class="card-footer text-muted">
+                    Last Log: {{ last_log_time|timesince:now_time }} ago
+                    <br>
+                    Last Contact: {{ last_contact_time|timesince:now_time }} ago
+                </div>
+            </div>
         </div>
-        <div class="card-footer text-muted">
-            Last Log: {{ last_log_time|timesince:now_time }} ago
-            <br>
-            Last Contact: {{ last_contact_time|timesince:now_time }} ago
+        <div class="col-lg-6 col-12">
+            <div class="card text-center">
+                <div class="card-header bg-secondary"><strong>Working Apps</strong></div>
+                <div class="card-body">
+                    <a target="_blank" href="/" class="btn btn-primary">Goto Portfolio</a>
+                    <a target="_blank" href="/facenet" class="btn btn-primary">Goto Facenet</a>
+                </div>
+            </div>
         </div>
+
     </div>
+    
 
     <div class="card text-center">
         <div>
@@ -41,17 +56,11 @@
         </div>
     </div>
 
-    <div class="card text-center">
-        <div class="card-header bg-secondary"><strong>Working Apps</strong></div>
-        <div class="card-body">
-            <a target="_blank" href="/" class="btn btn-primary">Goto Portfolio</a>
-            <a target="_blank" href="/facenet" class="btn btn-primary">Goto Facenet</a>
-        </div>
-    </div>
+    
 
 </div>
 
-<div class="col-lg-6 col-12">
+<div class="col-lg-4 col-12">
     <div id="content-related">
         <div class="module" id="recent-actions-module">
             <h4 class="mb-3">{% trans 'Recent actions' %}</h4>
