@@ -14,9 +14,11 @@
             {% for r in reviews %}
             <!-- testimonial item -->
             <div class="testimonial-item text-center mx-auto">
+                {% if r.profile_picture %}
                 <div class="thumb mb-3 mx-auto">
                     <img src="{{r.profile_picture}}" alt="customer-name" onerror="this.style.display = 'none'" />						
                 </div>
+                {% endif %}
                 <h4 class="mt-3 mb-0">{{r.client_name}}</h4>
 
                 <span class="subtitle">
