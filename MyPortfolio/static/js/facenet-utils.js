@@ -44,7 +44,7 @@ $(document).ready(function (e) {
                 var face_names = [];
                 response["faces"].forEach(face => {
                     drawBoundryBoxWithName(face["box"], face["name"]);
-                    face_names.push(face["name"]);
+                    face_names.push(face["name"] + " (" + face["distance"] + ")");
                 });
                 $("#image-process-form .messages").html(face_count + " faces identified <br>" + face_names.join(", "));
             },
