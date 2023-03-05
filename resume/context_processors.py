@@ -28,7 +28,7 @@ def dashboard(request):
         "log_chart": log_data,
         "total_log_count": logs.count(),
         "today_log_count": logs.filter(login_at__date=today).count(),
-        "last_log_time": logs.latest('login_at').login_at,
+        "last_log_time": logs.latest('login_at').login_at if logs else None,
         "last_contact_time": contacts.latest('created_at').created_at,
         "now_time": timezone.now(),
     }
